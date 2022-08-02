@@ -38,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
         String numberPhone = request.getParameter("number");
         String password = request.getParameter("password");
         //List<Person> groupList = new ArrayList();
-        Person person = new Person(name, surname, date, email, numberPhone, password);
+        Person person = new Person(name, surname, email, date, numberPhone, password);
 
         if (("".equals(name)) || ("".equals(surname)) || ("".equals(date)) || ("".equals(email))
                 || ("".equals(numberPhone)) || ("".equals(password))) {
@@ -52,7 +52,7 @@ public class RegistrationServlet extends HttpServlet {
             //------------------------
             request.getSession().setAttribute("name",  name);
             request.getSession().setAttribute("surname", surname);
-            List<Person> personList = personService.showPeople();
+            //List<Person> personList = personService.showPeople();
             request.setAttribute("group", personService);
             request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
         }

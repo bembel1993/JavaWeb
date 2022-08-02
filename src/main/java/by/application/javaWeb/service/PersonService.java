@@ -7,4 +7,5 @@ import java.util.List;
 public interface PersonService {
     boolean addPerson(Person person);
     List<Person> showPeople();
+    Person findPersonByName(String name);
 }

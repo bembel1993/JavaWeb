@@ -61,7 +61,7 @@
 
     <br> Password : <br><input name="password" type="password" placeholder="enter your password"/>
     <br>
-    <input name="add" type="submit"/></form>-->
+    <input name="add" type="submit"/></form>
 
     <table border="1">
         <caption>List of registered Users</caption>
@@ -87,9 +87,10 @@
         </td>
         </td>
 
-    </table>
+    </table>-->
+
     <p><font color="red">${errorMessage}</font</p>
-    <form method="POST" action="RegistrationServlet"> Новый :
+    <form method="POST" action="RegistrationServlet">
         <label style="float:right; width:500px; padding:10px">
                 <span style="font-family: LilyUPC; color:darkgoldenrod; font-size:50px">
                     <center>Registration

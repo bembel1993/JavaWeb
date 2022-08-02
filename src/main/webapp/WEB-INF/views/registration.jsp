@@ -90,7 +90,7 @@
     </table>-->
 
     <p><font color="red">${errorMessage}</font</p>
-    <form method="POST" action="RegistrationServlet"> Новый :
+    <form method="POST" action="RegistrationServlet">
         <label style="float:right; width:500px; padding:10px">
                 <span style="font-family: LilyUPC; color:darkgoldenrod; font-size:50px">
                     <center>Registration

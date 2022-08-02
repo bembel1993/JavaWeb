@@ -1,7 +1,7 @@
 CREATE TABLE `person` (
                           `id` INT(10) NOT NULL AUTO_INCREMENT,
-                          `first name` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
-                          `last name` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
+                          `name` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
+                          `surname` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
                           `date` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
                           `email` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
                           `number` VARCHAR(50) NOT NULL DEFAULT '0' COLLATE 'cp1250_general_ci',
