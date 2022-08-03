@@ -15,10 +15,11 @@ import java.util.List;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
-    private ListAddPersons listAddPersons = new ListAddPersons();
+   // private ListAddPersons listAddPersons = new ListAddPersons();
     PersonService personService = new PersonServiceImpl();
-String gName;
-String gPass;
+    String gName;
+    String gPass;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
@@ -29,24 +30,43 @@ String gPass;
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         List<Person> personList = personService.showPeople();
-        if (personList.size() != 0) {
-            System.out.format("%10s%20s%20s", "ID |", "First Name |", "Password |");
-            for (Person p : personList) {
-                System.out.println(" ");
-                p = personService.findPersonByName(name);
-                System.out.format("%10s%20s%20s", p.getId() + " |", p.getFirstName() +
-                        " |", p.getPassword() + " |");
-                gName = p.getFirstName();
-                gPass = p.getPassword();
-            }
-            System.out.println(gName);
-            if(name.equals(gName) && password.equals(gPass)){
-                request.getSession().setAttribute("name", name);
-                response.sendRedirect(request.getContextPath() + "/WelcomeClassMenu");
-            }else{
-                System.out.println("Repeat");
-                request.getRequestDispatcher("/WEB-INF/views/choice.jsp").forward(request, response);
-            }
+            if (personList.size() != 0) {
+               // System.out.format("%10s%20s%20s", "ID |", "First Name |", "Password |");
+                boolean isFound = false;
+                for (Person p : personList) {
+                    if (p.getFirstName().equals(name) && p.getPassword().equals(password)){
+                        System.out.format("%10s%20s%20s", p.getId() + " |", p.getFirstName() +
+                                " |", p.getPassword() + " |");
+                        isFound = true;
+                    }
+                /*    System.out.println(" ");
+                    p = personService.findPersonByName(name);
+                    System.out.format("%10s%20s%20s", p.getId() + " |", p.getFirstName() +
+                            " |", p.getPassword() + " |");
+                    gName = p.getFirstName();
+                    gPass = p.getPassword();*/
+                }
+                Person per = null;
+                if (isFound){
+                    per = personService.findPersonByName(name);
+                    request.getSession().setAttribute("name", name);
+                    response.sendRedirect(request.getContextPath() + "/WelcomeClassMenu");
+                } else {
+                    request.setAttribute("errorMessage", "Invalid Login or password!!");
+                    request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+                }
+          /*      if ((name.equals(gName)) && (password.equals(gPass))) {
+                    request.getSession().setAttribute("name", name);
+                    response.sendRedirect(request.getContextPath() + "/WelcomeClassMenu");
+                } else if ((name.equals(gName)) && (!password.equals(gPass)) ||
+                        (!name.equals(gName)) && (password.equals(gPass)) ||
+                        (!name.equals(gName)) && (!password.equals(gPass))) {
+                    request.setAttribute("errorMessage", "Invalid Login or password!!");
+                    request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+                } else  {
+                request.setAttribute("errorMessage", "Invalid Login or password!!");
+                request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            }*/
                /* if ((name.equals(p.getFirstName())) && (password.equals(p.getPassword()))) {
                     request.getSession().setAttribute("name", p.getFirstName());
                     response.sendRedirect(request.getContextPath() + "/WelcomeClassMenu");
@@ -61,11 +81,10 @@ String gPass;
                     request.setAttribute("errorMessage", "Invalid Login or password!!");
                     request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
                 }*/
-        } else {
-            System.out.println("Users is not!");
-            request.getRequestDispatcher("/WEB-INF/views/choice.jsp").forward(request, response);
-        }
-        //if (validateUser(name, password)) {
+            } else {
+                System.out.println("Users in DB is not!");
+                request.getRequestDispatcher("/WEB-INF/views/choice.jsp").forward(request, response);
+            }
       /*  if (validateUser(name, password)) {
             request.getSession().setAttribute("name", name);
             response.sendRedirect(request.getContextPath() + "/WelcomeClassMenu");
