@@ -13,7 +13,8 @@
 
     <style>
         .footer {
-            position: absolute; bottom: 0;
+            position: absolute;
+            bottom: 0;
             width: 100%;
             height: 60px;
             background-color: #f5f5f5;
@@ -38,14 +39,15 @@
         .op:hover {
             opacity: 1
         }
-        body{
+
+        body {
             background-image: url("img/shutterstock.jpg");
         }
     </style>
 </head>
 <body>
 <div class="op" style="background-color:white; position:absolute; left:20px; top:20px">
-<!--<p><font color="red">${errorMessage}</font></p>
+    <!--<p><font color="red">${errorMessage}</font></p>
 <form method="POST" action="PersonsList">
     <label style="float:right; width:500px; padding:10px">
                 <span style="font-family: LilyUPC; color:darkgoldenrod; font-size:50px">
@@ -80,6 +82,7 @@
                 <td> ${person.email}</td>
                 <td> ${person.date}</td>
                 <td> ${person.number}</td>
+                <td> ${person.login}</td>
                 <td> ${person.password}</td>
             </tr>
         </c:forEach>
@@ -102,6 +105,8 @@
     <br>Email : <br><input name="date" type="text" placeholder="enter email"/>
 
     <br>Number phone : <br><input name="number" type="text" placeholder="enter your number"/>
+
+    <br>Login : <br><input name="login" type="text" placeholder="enter your login"/>
 
     <br> Password : <br><input name="password" type="password" placeholder="enter your password"/>
     <br>

@@ -66,8 +66,8 @@
                     <center>
                         LogIn
                         <br/>
-        <br>Name :
-                        <br><input name="name" type="text" placeholder="enter your name"/>
+        <br>Login :
+                        <br><input name="login" type="text" placeholder="enter your name"/>
         <br>
          Password :
                         <br><input name="password" type="password" placeholder="enter your password"/>

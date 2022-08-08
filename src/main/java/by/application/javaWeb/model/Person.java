@@ -19,18 +19,21 @@ public class Person {
     private String email;
     @Column (name = "number")
     private String number;
+    @Column (name = "login")
+    private String login;
     @Column (name = "password")
     private String password;
 
     public Person() {
     }
 
-    public Person(String name, String surname, String date, String email, String number, String password) {
+    public Person(String name, String surname, String date, String email, String number, String login,String password) {
         this.name = name;
         this.surname = surname;
         this.date = date;
         this.email = email;
         this.number = number;
+        this.login = login;
         this.password = password;
     }
 
@@ -77,6 +80,14 @@ public class Person {
         this.number = number;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -102,6 +113,7 @@ public class Person {
                 ", dateOfBirth='" + date + '\'' +
                 ", email='" + email + '\'' +
                 ", numberPhone='" + number + '\'' +
+                ", numberPhone='" + login + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

@@ -128,7 +128,7 @@
 <body>
 <div class="container">
     <div class="upheader">
-        <p class="t3">Welcome ${name} </p>
+        <p class="t3">Welcome ${name} ${surname} </p>
        <!-- <img src = "img/ibalogo.jpg" width="150" height="150"-->
       <!--  <p class='t2'>Bembel Vitali</p>-->
         <p class='t2'>Group ПП1.20/ 1.21</p>

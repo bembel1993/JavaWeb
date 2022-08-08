@@ -36,7 +36,7 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public Person findPersonByName(String name) {
+    public Person findPersonByName(String login) {
         Person person = null;
         try {
             Session session = SessionFactoryImpl.getSessionFactory().openSession();
@@ -44,7 +44,7 @@ public class PersonDaoImpl implements PersonDao {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<Person> cr = cb.createQuery(Person.class);
             Root<Person> root = cr.from(Person.class);
-            cr.select(root).where(cb.equal(root.get("name"), name));
+            cr.select(root).where(cb.equal(root.get("login"), login));
             person = session.createQuery(cr).getSingleResult();
             tx.commit();
             session.close();
